@@ -1,7 +1,6 @@
 import tensorflow as tf
 
 __author__ = 'Neyzoter Song'
-__all__ = ['sigmoid']
 
 def sigmoid(z):
     """

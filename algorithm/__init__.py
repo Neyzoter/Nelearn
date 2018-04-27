@@ -3,5 +3,3 @@
 import sys
 
 __author__ = 'Neyzoter Song'
-
-__all__ = []
