@@ -115,7 +115,46 @@ def forward_propagation(X, parameters):
 
     
     return Z3
-	
+
+def simple_NN_predict(X, parameters):
+    """
+    配合该简单的神经网络实现预测
+    该神经网络只有2个隐藏层
+    
+    X-- input dataset placeholder, of shape (input size, number of examples)
+    parameters -- 系数
+
+    prediction -- 预测结果，即下标
+    """
+    W1 = tf.convert_to_tensor(parameters["W1"])
+    b1 = tf.convert_to_tensor(parameters["b1"])
+    W2 = tf.convert_to_tensor(parameters["W2"])
+    b2 = tf.convert_to_tensor(parameters["b2"])
+    W3 = tf.convert_to_tensor(parameters["W3"])
+    b3 = tf.convert_to_tensor(parameters["b3"])
+
+    params = {"W1": W1,
+              "b1": b1,
+              "W2": W2,
+              "b2": b2,
+              "W3": W3,
+              "b3": b3}
+
+    x = tf.placeholder("float", [12288, 1])
+
+    z3 = forward_propagation(x, params)
+
+    # z3中的最大值下标
+    #  argmax(input, axis=None, name=None, dimension=None)
+    # input矩阵或者向量，axis=1：在行中比较；axis=0：在列中比较
+    # 如果Z3是一个向量，则返回一个值；如果Z3是一个矩阵则返回一个向量
+    p = tf.argmax(z3)
+
+    with tf.Session() as sess:
+        prediction = sess.run(p, feed_dict = {x: X})
+
+    return prediction
+
 def getParafromMinibatchModel(X_train, Y_train, X_test, Y_test, learning_rate = 0.0001,
           num_epochs = 1500, minibatch_size = 32, print_cost = True):
     """

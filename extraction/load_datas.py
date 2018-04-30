@@ -8,7 +8,7 @@ def load_dataset_h5(dir_ab=''):
 	h5数据采集
 	"""
 	# train_dataset = h5py.File('I:\Github/Neyzoter/Codes/Nelearn/extraction/datasets/train_signs.h5', "r")
-	train_dataset = h5py.File(dir_ab+'/datasets/train_signs.h5', "r")
+	train_dataset = h5py.File(dir_ab+'datasets/train_signs.h5', "r")
 	train_set_x_orig = np.array(train_dataset["train_set_x"][:]) # your train set features
 	train_set_y_orig = np.array(train_dataset["train_set_y"][:]) # your train set labels
 
