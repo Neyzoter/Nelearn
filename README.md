@@ -6,6 +6,8 @@ Nelearn
 
 |----algorithm
 
+|----extraction(data)
+
 |----module
 
 |----strategy
